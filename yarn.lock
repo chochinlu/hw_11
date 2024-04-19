@@ -62,7 +62,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@noble/curves@npm:^1.2.0":
+"@noble/curves@npm:^1.4.0":
   version: 1.4.0
   resolution: "@noble/curves@npm:1.4.0"
   dependencies:
@@ -117,11 +117,11 @@ __metadata:
   linkType: hard
 
 "@solana/web3.js@npm:^1.68.0":
-  version: 1.91.6
-  resolution: "@solana/web3.js@npm:1.91.6"
+  version: 1.91.7
+  resolution: "@solana/web3.js@npm:1.91.7"
   dependencies:
     "@babel/runtime": "npm:^7.23.4"
-    "@noble/curves": "npm:^1.2.0"
+    "@noble/curves": "npm:^1.4.0"
     "@noble/hashes": "npm:^1.3.3"
     "@solana/buffer-layout": "npm:^4.0.1"
     agentkeepalive: "npm:^4.5.0"
@@ -135,7 +135,7 @@ __metadata:
     node-fetch: "npm:^2.7.0"
     rpc-websockets: "npm:^7.5.1"
     superstruct: "npm:^0.14.2"
-  checksum: 10c0/c260e4d004a17fdaf738388d7eef12b96f2e936a11b2a4af72a5bb2f7cd7d5be3fe4104ec3aad74e5fa10126a4ef51587f85a77d798e74d443da2bdab5f755c4
+  checksum: 10c0/9ec00912b4d91870da5706e1c651aa76abe904c1f7bbf062cf169ebcea1ec0bf4c1945333b5fe09323ed5d7b18a2bb42a6e1858bc2baea9c8b0807e7b5d02ffa
   languageName: node
   linkType: hard
 
@@ -2282,17 +2282,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yargs-parser@npm:20.2.4":
+"yargs-parser@npm:20.2.4, yargs-parser@npm:^20.2.2":
   version: 20.2.4
   resolution: "yargs-parser@npm:20.2.4"
   checksum: 10c0/08dc341f0b9f940c2fffc1d1decf3be00e28cabd2b578a694901eccc7dcd10577f10c6aa1b040fdd9a68b2042515a60f18476543bccacf9f3ce2c8534cd87435
-  languageName: node
-  linkType: hard
-
-"yargs-parser@npm:^20.2.2":
-  version: 20.2.9
-  resolution: "yargs-parser@npm:20.2.9"
-  checksum: 10c0/0685a8e58bbfb57fab6aefe03c6da904a59769bd803a722bb098bd5b0f29d274a1357762c7258fb487512811b8063fb5d2824a3415a0a4540598335b3b086c72
   languageName: node
   linkType: hard
 
