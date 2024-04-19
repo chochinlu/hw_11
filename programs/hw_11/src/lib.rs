@@ -10,7 +10,16 @@ pub mod hw_11 {
         let storage = &mut ctx.accounts.storage;
         storage.balance = 100;
 
-        msg!("storage balance is initialized at {}", storage.balance);
+        msg!("Storage balance is initialized at {}", storage.balance);
+
+        Ok(())
+    }
+
+    pub fn update(ctx: Context<Update>) -> Result<()> {
+        let storage = &mut ctx.accounts.storage;
+
+        storage.balance += 100;
+        msg!("Upadate the storage balance to {}", storage.balance);
 
         Ok(())
     }
@@ -20,10 +29,17 @@ pub mod hw_11 {
 pub struct Initialize<'info> {
     #[account(
         init,
-        seeds = [signer.key().as_ref()],
-        bump,
-        payer = signer, 
+        payer = signer,
         space = 8 + 8)]
+    pub storage: Account<'info, Storage>,
+    #[account(mut)]
+    pub signer: Signer<'info>,
+    pub system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+pub struct Update<'info> {
+    #[account(constraint = storage.balance <= 1000)]
     pub storage: Account<'info, Storage>,
     #[account(mut)]
     pub signer: Signer<'info>,
