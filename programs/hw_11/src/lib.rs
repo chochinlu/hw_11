@@ -29,6 +29,8 @@ pub mod hw_11 {
 pub struct Initialize<'info> {
     #[account(
         init,
+        seeds = [signer.key().as_ref()],
+        bump,
         payer = signer,
         space = 8 + 8)]
     pub storage: Account<'info, Storage>,
@@ -39,7 +41,7 @@ pub struct Initialize<'info> {
 
 #[derive(Accounts)]
 pub struct Update<'info> {
-    #[account(constraint = storage.balance <= 1000)]
+    #[account(mut, constraint = storage.balance < 1000)]
     pub storage: Account<'info, Storage>,
     #[account(mut)]
     pub signer: Signer<'info>,

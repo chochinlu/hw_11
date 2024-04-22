@@ -25,13 +25,56 @@ describe("hw_11", () => {
     console.log("Your transaction signature", tx);
   });
 
-  it("Balance is 100", async () => {
+  it("Initial balance is 100", async () => {
     const data = await program.account.storage.fetch(storagePDA);
 
-    // convert BN to decimal
+    // Convert BN to decimal
     const value = parseInt(data.balance.toString('hex'), 16);
 
     expect(value).equal(100, 'Value is not 100')
+  })
+
+  it('Using the update function to increase the balance by 100 each time', async () => {
+    const tx = await program.methods
+      .update()
+      .accounts({
+        storage: storagePDA
+      })
+      .rpc();
+
+    const data = await program.account.storage.fetch(storagePDA);
+
+    const value = parseInt(data.balance.toString('hex'), 16);
+
+    expect(value).equal(200, 'Value is not 100')
+  })
+
+  it('If the balance exceeds 1000, the update function cannot be used', async () => {
+    const maxBalance = 1000;
+
+    // Execute eight transactions successfully
+    for (let i = 0; i < 8; i++) {
+      const tx = await program.methods
+        .update()
+        .accounts({ storage: storagePDA })
+        .rpc();
+    }
+
+    // The 9th exexcution should be false
+    try {
+      await program.methods
+        .update()
+        .accounts({ storage: storagePDA })
+        .rpc()
+      expect.fail('Expected transaction to fail');
+    } catch (err) {
+      // console.log('error: ', err.message);
+    }
+
+    // Confirm the final balance once more
+    const data = await program.account.storage.fetch(storagePDA);
+    const value = parseInt(data.balance.toString('hex'), 16);
+    expect(value).equal(maxBalance);
   })
 
 });
