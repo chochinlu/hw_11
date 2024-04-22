@@ -17,8 +17,8 @@ pub mod hw_11 {
 
     pub fn update(ctx: Context<Update>) -> Result<()> {
         let storage = &mut ctx.accounts.storage;
-
         storage.balance += 100;
+
         msg!("Upadate the storage balance to {}", storage.balance);
 
         Ok(())
